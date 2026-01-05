@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package common;
+
+option go_package = "github.com/nurbeknurjanov/go-product-proto/gen/common";
+
+import "google/protobuf/empty.proto";
+import "common/messages.proto";
+
+service Common{
+  rpc GetAccessToken     (google.protobuf.Empty) returns  (TokenResponse) {};
+}

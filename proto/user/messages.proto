@@ -1,0 +1,40 @@
+
+syntax = "proto3";
+
+package user;
+
+import "common/messages.proto";
+
+option go_package = "github.com/nurbeknurjanov/go-product-proto/gen/user;user";
+
+enum UserStatus {
+  ZERO_VALUE_REQUIRED = 0;
+  Approved_User = 1;
+  banned_user = 2;
+}
+
+message UserRequest {
+  int32 id = 1;
+}
+
+message User {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+  string password = 4;
+  int32 age = 5;
+  UserStatus status = 6;
+}
+
+message FilterParams{
+  string name = 1;
+}
+message UsersRequest {
+  FilterParams filter_params = 1;
+  common.PaginationRequest pagination_params = 2;
+}
+
+message UsersResponse {
+  repeated User users = 1;
+  common.PaginationResponse pagination_params = 2;
+}

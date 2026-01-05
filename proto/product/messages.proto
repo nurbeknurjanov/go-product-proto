@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "github.com/nurbeknurjanov/go-product-proto/gen/product;product";
+
+message GetRequest {
+  int64 id = 1;
+}
+
+message CreateRequest {
+  string name = 1;
+  optional string description = 2;
+}
+
+message UpdateRequest {
+  optional string name = 1;
+  optional string description = 2;
+}
+
+message FilterRequest {
+  optional int64 id = 1;
+  optional string name = 2;
+  optional string description = 3;
+}
+
+message DeleteRequest {
+  int64 id = 1;
+}
+
+message Product {
+  int64  id = 1;
+  string name = 2;
+  optional string description = 3;
+  //google.protobuf.StringValue description = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+}

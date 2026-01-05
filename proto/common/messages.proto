@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package common;//влияет на сам прото пакеты
+
+option go_package = "github.com/nurbeknurjanov/go-product-proto/gen/common;common";//влияет на го пакеты,
+// ;common не обязательный, обычно как правило папка и пакет для удобства делают одинаковыми
+
+message PaginationRequest{
+  int32 page_number = 1;
+  int32 page_size = 2;
+}
+
+message PaginationResponse{
+  int32 total = 1;
+  int32 page_size = 2;
+  int32 page_number = 3;
+  int32 page_count = 4;
+}
+
+message TokenResponse {
+  string token = 1;
+}

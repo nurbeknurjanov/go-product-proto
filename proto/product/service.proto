@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package product;
+
+import "product/messages.proto";
+
+option go_package = "github.com/nurbeknurjanov/go-product-proto/gen/product;product";
+
+service ProductsService {
+  rpc Create (CreateRequest) returns (Product);
+  rpc Get (GetRequest) returns (Product);
+  rpc Update (UpdateRequest) returns (Product);
+  rpc Delete (DeleteRequest) returns (Product);
+  rpc List (FilterRequest) returns (Product);
+}
+

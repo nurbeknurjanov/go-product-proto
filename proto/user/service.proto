@@ -1,0 +1,17 @@
+
+syntax = "proto3";
+
+package user;
+
+import "user/messages.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/nurbeknurjanov/go-product-proto/gen/user;user";
+
+service Users{
+  rpc GetUser     (UserRequest) returns           (User) {};
+  rpc GetUsersStream    (google.protobuf.Empty) returns (stream User) {};
+
+  rpc DeleteUser  (UserRequest) returns           (google.protobuf.Empty) {};
+  rpc GetUsers    (UsersRequest) returns (UsersResponse) {};
+}
