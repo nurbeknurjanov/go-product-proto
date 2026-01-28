@@ -9,6 +9,7 @@ package product
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
@@ -279,8 +280,8 @@ type Product struct {
 	Name        string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	Description *string                `protobuf:"bytes,3,opt,name=description,proto3,oneof" json:"description,omitempty"`
 	// google.protobuf.StringValue description = 3;
-	CreatedAt     string `protobuf:"bytes,4,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
-	UpdatedAt     string `protobuf:"bytes,5,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -336,25 +337,25 @@ func (x *Product) GetDescription() string {
 	return ""
 }
 
-func (x *Product) GetCreatedAt() string {
+func (x *Product) GetCreatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.CreatedAt
 	}
-	return ""
+	return nil
 }
 
-func (x *Product) GetUpdatedAt() string {
+func (x *Product) GetUpdatedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.UpdatedAt
 	}
-	return ""
+	return nil
 }
 
 var File_product_messages_proto protoreflect.FileDescriptor
 
 const file_product_messages_proto_rawDesc = "" +
 	"\n" +
-	"\x16product/messages.proto\x12\aproduct\"\x1c\n" +
+	"\x16product/messages.proto\x12\aproduct\x1a\x1fgoogle/protobuf/timestamp.proto\"\x1c\n" +
 	"\n" +
 	"GetRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"Z\n" +
@@ -375,13 +376,13 @@ const file_product_messages_proto_rawDesc = "" +
 	"\x05_nameB\x0e\n" +
 	"\f_description\"\x1f\n" +
 	"\rDeleteRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x03R\x02id\"\xa0\x01\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"\xd8\x01\n" +
 	"\aProduct\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12%\n" +
-	"\vdescription\x18\x03 \x01(\tH\x00R\vdescription\x88\x01\x01\x12\x1c\n" +
-	"\tcreatedAt\x18\x04 \x01(\tR\tcreatedAt\x12\x1c\n" +
-	"\tupdatedAt\x18\x05 \x01(\tR\tupdatedAtB\x0e\n" +
+	"\vdescription\x18\x03 \x01(\tH\x00R\vdescription\x88\x01\x01\x128\n" +
+	"\tcreatedAt\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x128\n" +
+	"\tupdatedAt\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\x0e\n" +
 	"\f_descriptionB@Z>github.com/nurbeknurjanov/go-product-proto/gen/product;productb\x06proto3"
 
 var (
@@ -398,19 +399,22 @@ func file_product_messages_proto_rawDescGZIP() []byte {
 
 var file_product_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_product_messages_proto_goTypes = []any{
-	(*GetRequest)(nil),    // 0: product.GetRequest
-	(*CreateRequest)(nil), // 1: product.CreateRequest
-	(*UpdateRequest)(nil), // 2: product.UpdateRequest
-	(*FilterRequest)(nil), // 3: product.FilterRequest
-	(*DeleteRequest)(nil), // 4: product.DeleteRequest
-	(*Product)(nil),       // 5: product.Product
+	(*GetRequest)(nil),            // 0: product.GetRequest
+	(*CreateRequest)(nil),         // 1: product.CreateRequest
+	(*UpdateRequest)(nil),         // 2: product.UpdateRequest
+	(*FilterRequest)(nil),         // 3: product.FilterRequest
+	(*DeleteRequest)(nil),         // 4: product.DeleteRequest
+	(*Product)(nil),               // 5: product.Product
+	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
 }
 var file_product_messages_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6, // 0: product.Product.createdAt:type_name -> google.protobuf.Timestamp
+	6, // 1: product.Product.updatedAt:type_name -> google.protobuf.Timestamp
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_product_messages_proto_init() }
